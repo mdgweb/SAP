@@ -5,8 +5,8 @@ Send A Preview - Listen to previews of any artist over the phone
 
 Requirements
 ------------
-* A Twilio developer account
-* A 7Digital developer account
+* A Twilio developer account - http://twilio.com
+* A 7Digital developer account - http://developer.7digital.com
 
 Setup
 -----
