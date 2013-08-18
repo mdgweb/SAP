@@ -31,7 +31,7 @@ class SendAPreview(object):
             artist = results.get_next_page()[0]
             top_tracks = map(lambda x: {
                 'title' : x.get_title(),
-                'preview' : x.get_audio(),
+                'preview' : x.get_audio() + "&oauth_consumer_key=%s" %(sap.sevend_key),
             }, artist.get_top_tracks())
             return {
                 'artist' : "%s" %(artist),
