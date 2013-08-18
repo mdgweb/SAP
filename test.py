@@ -26,10 +26,9 @@ def main(argv):
         elif opt in ("-b", "--body"):
             body = arg
     ## Send query to SAP SMS endpoint
-    urlopen(Request("%s/sms" %(sas.servername), {
-        'From' : from_
-        'Body' : body
-    })).read()
+    print 'Sending message ...'
+    urlopen(Request("%s/sms" %(sas.servername), "From=%s&Body=%s" %(from_, body)))
+    print '... Message sent'
 
 if __name__ == "__main__":
     main(sys.argv[1:])
