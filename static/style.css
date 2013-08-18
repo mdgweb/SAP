@@ -18,15 +18,23 @@ a:hover {
 }
 .site-tagline {
   margin-top: 20px;
-  line-height: 1.1em;
+  line-height: 1.2em;
   font-weight: 700;
 }
+
 .phone {
-  font-size: 3em;
+  font-size: 2.8em;
   font-weight: 700;
 }
 .phone, strong, .site-tagline {
   color: #f00;
+}
+.phone a {
+    color: #f00;
+    border-bottom: 1px dotted #f00;
+}
+.phone a:hover {
+  border: none;
 }
 
 footer {
@@ -41,4 +49,15 @@ footer img {
 }
 footer a {
   border: none;
+}
+
+@media screen and (min-width: 651px) {
+  aside img {
+    margin-top: -5px;
+  }
+}
+@media screen and (max-width: 650px) {
+  aside {
+    text-align: center;
+  }
 }
