@@ -1,0 +1,44 @@
+body {
+  font-family: Helvetica, Arial, sans-serif;
+  margin-top: 50px;
+}
+a {
+  color: #666;
+  border-bottom: 1px dotted #666;
+  text-decoration: none;
+}
+a:hover {
+  border: none;
+}
+
+.site-title {
+  margin-bottom: 0;
+  font-weight: 700;
+  
+}
+.site-tagline {
+  margin-top: 20px;
+  line-height: 1.1em;
+  font-weight: 700;
+}
+.phone {
+  font-size: 3em;
+  font-weight: 700;
+}
+.phone, strong, .site-tagline {
+  color: #f00;
+}
+
+footer {
+  text-align: center;
+  margin: auto;
+  font-size: 80%;
+  width: 100%;
+  margin-top: -10px;
+}
+footer img {
+  width: 70px;
+}
+footer a {
+  border: none;
+}
