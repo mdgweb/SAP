@@ -9,21 +9,27 @@ from twilio.twiml import Response as TwilioResponse
 
 import uuid
 
-from urllib2 import urlopen, Request
+from urllib2 import urlopen
 from flask import Flask, request, render_template
 from json import dumps, loads
 
 import py7digital
 
 import config as sap
-        
+                
 class SendAPreview(object):
+
+    def preview_url(url):
+        """Get final preview URL (302 redirect) to avoid exposing OAUTHKEY in the TwiML.
+        This should be http://previews.7digital.com/clips/0/ID.clip.mp3, but better to get through HTTP in case it changes
+        """
+        return urlopen("%s&oauth_consumer_key=%s" %(url, sap.sevend_key)).geturl()
 
     def top_tracks(self, artist):
         """Get artist top-tracks from 7Digital"""
         ## 7D API parameters
-        py7digital.OAUTHKEY = sap.sevend_key
         py7digital.COUNTRY = sap.sevend_country
+        py7digital.OAUTHKEY = sap.sevend_key        
         ## Get artist + top tracks
         results = py7digital.search_artist(artist)
         if results:
@@ -31,7 +37,7 @@ class SendAPreview(object):
             artist = results.get_next_page()[0]
             top_tracks = map(lambda x: {
                 'title' : x.get_title(),
-                'preview' : x.get_audio() + "&oauth_consumer_key=%s" %(sap.sevend_key),
+                'preview' : self.preview_url(x.get_audio()),
             }, artist.get_top_tracks())
             return {
                 'artist' : "%s" %(artist),
