@@ -19,7 +19,7 @@ import config as sap
                 
 class SendAPreview(object):
 
-    def preview_url(url):
+    def preview_url(self, url):
         """Get final preview URL (302 redirect) to avoid exposing OAUTHKEY in the TwiML.
         This should be http://previews.7digital.com/clips/0/ID.clip.mp3, but better to get through HTTP in case it changes
         """
